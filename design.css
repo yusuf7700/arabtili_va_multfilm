@@ -697,6 +697,7 @@ background-position:center;
     }
     /*=================================
       PREMIUM HOVER EFFECT
+      (faqat sichqonchali qurilmalar uchun — telefon/planshetda ishlamaydi)
 ==================================*/
 
 .serial-card{
@@ -706,7 +707,9 @@ background-position:center;
     cursor:pointer;
     
     }
-    
+
+@media (hover:hover) and (pointer:fine){
+
     .serial-card::after{
     
     content:"";
@@ -785,6 +788,22 @@ background-position:center;
     background:#1b9de2;
     
     }
+
+}
+
+/* TELEFON / PLANSHET (touch) — nom va tugma rasm ostida doim ko'rinadi, hover shart emas */
+
+@media (hover:none), (pointer:coarse){
+
+    .serial-info{
+
+    position:relative;
+
+    text-align:center;
+
+    }
+
+}
     .serial-card::before{
 
         content:"ARABCHA";
@@ -1701,12 +1720,6 @@ background-position:center;
     }
 
     .serial-card img{
-
-    height:220px;
-
-    }
-
-    .serial-card::after{
 
     height:220px;
 
