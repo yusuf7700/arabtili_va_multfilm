@@ -135,4 +135,37 @@ document.addEventListener("DOMContentLoaded", () => {
     card.style.transitionDelay = `${(i % 6) * 0.08}s`;
   });
 
+  /* ---------- TELEFONDA BOSGANDA OVERLAY CHIQISHI ---------- */
+  const isTouchDevice = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  if (isTouchDevice) {
+    document.querySelectorAll(".serial-card").forEach(card => {
+      card.addEventListener("click", (e) => {
+        // Havola (Telegramda ochish) ustiga bosilsa — oddiy ishlayveradi
+        if (e.target.closest("a")) return;
+
+        e.preventDefault();
+
+        const wasActive = card.classList.contains("active");
+
+        document.querySelectorAll(".serial-card.active").forEach(c => {
+          c.classList.remove("active");
+        });
+
+        if (!wasActive) {
+          card.classList.add("active");
+        }
+      });
+    });
+
+    // Boshqa joyga bosilganda ochiq kartani yopish
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".serial-card")) {
+        document.querySelectorAll(".serial-card.active").forEach(c => {
+          c.classList.remove("active");
+        });
+      }
+    });
+  }
+
 });
